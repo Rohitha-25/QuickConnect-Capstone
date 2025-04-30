@@ -40,6 +40,8 @@ public class BookingService {
         booking.setService(service.get());
         booking.setProvider(provider);
         booking.setStatus("PENDING");
+        booking.setBookingDate(LocalDate.now());
+        booking.setAmount(service.get().getPrice());
 
         return bookingRepo.save(booking);
     }
@@ -49,7 +51,7 @@ public class BookingService {
     }
 
     public List<Booking> getBookingsByProvider(Long providerId) {
-        return bookingRepo.findByProviderId(providerId);
+        return bookingRepo.findByServiceProviderId(providerId);
     }
     
     public List<Booking> getBookingsByDate(LocalDate date) {

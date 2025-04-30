@@ -3,7 +3,6 @@ package com.ust.qcb.entity;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ust.qcb.enums.Role;
 
 import jakarta.persistence.CascadeType;
@@ -29,9 +28,8 @@ public class ServiceProvider {
     @Enumerated(EnumType.STRING)
     private Role role;
     
-    @JsonIgnore
     @OneToMany(mappedBy = "serviceProvider", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonIgnore
     private List<Service> services;
     
     @JsonIgnore

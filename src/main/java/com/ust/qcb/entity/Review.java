@@ -1,6 +1,6 @@
 package com.ust.qcb.entity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +17,7 @@ public class Review {
 
     private int rating;
     private String comment;
-    private LocalDateTime date;
+    private LocalDate date;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -51,11 +51,11 @@ public class Review {
 		this.comment = comment;
 	}
 
-	public LocalDateTime getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
@@ -75,7 +75,7 @@ public class Review {
 		this.service = service;
 	}
 
-	public Review(Long id, int rating, String comment, LocalDateTime date, User user, Service service) {
+	public Review(Long id, int rating, String comment, LocalDate date, User user, Service service) {
 		super();
 		this.id = id;
 		this.rating = rating;

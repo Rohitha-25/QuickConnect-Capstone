@@ -30,18 +30,18 @@ public class BookingController {
         return bookingService.getBookingsByProvider(providerId);
     }
 
-    @GetMapping("/{date}")
+    @GetMapping("/date/{date}")
     public List<Booking> getBookingsByDate(@PathVariable String date) {
         LocalDate bookingDate = LocalDate.parse(date); // Format: yyyy-mm-dd
         return bookingService.getBookingsByDate(bookingDate);
     }
     
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public Booking getBookingById(@PathVariable Long id) {
         return bookingService.getBookingById(id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteBooking(@PathVariable Long id) {
         bookingService.deleteBooking(id);
         return "Booking deleted successfully";
