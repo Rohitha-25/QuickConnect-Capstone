@@ -1,6 +1,6 @@
 package com.ust.qcb.entity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +15,7 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDateTime bookingDateTime;
+    private LocalDate bookingDate;
     private String status;
     private double amount;
 
@@ -29,7 +29,7 @@ public class Booking {
 
     @ManyToOne
     @JoinColumn(name = "serviceProvider_id")
-    private ServiceProvider provider;
+    private ServiceProvider serviceProvider;
     
     public Long getId() {
 		return id;
@@ -39,12 +39,12 @@ public class Booking {
 		this.id = id;
 	}
 
-	public LocalDateTime getBookingDateTime() {
-		return bookingDateTime;
+	public LocalDate getBookingDate() {
+		return bookingDate;
 	}
 
-	public void setBookingDateTime(LocalDateTime bookingDateTime) {
-		this.bookingDateTime = bookingDateTime;
+	public void setBookingDate(LocalDate bookingDate) {
+		this.bookingDate = bookingDate;
 	}
 
 	public String getStatus() {
@@ -80,23 +80,23 @@ public class Booking {
 	}
 
 	public ServiceProvider getProvider() {
-		return provider;
+		return serviceProvider;
 	}
 
-	public void setProvider(ServiceProvider provider) {
-		this.provider = provider;
+	public void setProvider(ServiceProvider serviceProvider) {
+		this.serviceProvider = serviceProvider;
 	}
 
-	public Booking(Long id, LocalDateTime bookingDateTime, String status, double amount, User user, Service service,
-			ServiceProvider provider) {
+	public Booking(Long id, LocalDate bookingDate, String status, double amount, User user, Service service,
+			ServiceProvider serviceProvider) {
 		super();
 		this.id = id;
-		this.bookingDateTime = bookingDateTime;
+		this.bookingDate = bookingDate;
 		this.status = status;
 		this.amount = amount;
 		this.user = user;
 		this.service = service;
-		this.provider = provider;
+		this.serviceProvider = serviceProvider;
 	}
 
 	public Booking() {

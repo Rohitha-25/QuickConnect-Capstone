@@ -1,5 +1,6 @@
 package com.ust.qcb.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ public class ReviewService {
         com.ust.qcb.entity.Service service = serviceRepo.findById(serviceId).orElseThrow();
         review.setUser(user);
         review.setService(service);
+        review.setDate(LocalDate.now());
         return reviewRepo.save(review);
     }
 

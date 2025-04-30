@@ -23,12 +23,12 @@ public class ServiceProviderController {
         return providerService.getAllProviders();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ServiceProvider getProviderById(@PathVariable Long id) {
         return providerService.getProviderById(id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteProvider(@PathVariable Long id) {
         return providerService.deleteProvider(id);
     }

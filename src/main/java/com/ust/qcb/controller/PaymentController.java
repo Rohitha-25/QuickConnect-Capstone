@@ -19,7 +19,7 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
-    @PostMapping("/make/{bookingId}")
+    @PostMapping("/pay/{bookingId}")
     public Payment makePayment(@PathVariable Long bookingId, @RequestBody Payment payment) {
         return paymentService.makePayment(bookingId, payment);
     }

@@ -2,7 +2,6 @@ package com.ust.qcb.entity;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -27,7 +26,7 @@ public class Service {
 
     @ManyToOne
     @JoinColumn(name = "serviceProvider_id")
-    @JsonBackReference
+    @JsonIgnore
     private ServiceProvider serviceProvider;
     
     @JsonIgnore

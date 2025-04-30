@@ -22,13 +22,28 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**", "/api/services/**").permitAll()
-                .requestMatchers("/api/users/**").hasRole("USER")
-                .requestMatchers("/api/bookings/**").hasRole("USER")
-                .requestMatchers("/api/payments/**").hasRole("USER")
+                .requestMatchers("/api/auth/**",
+                				 "/api/users/get/**",
+                		         "/api/users/delete/**",
+                				 "/api/services/**", 
+                				 "/api/bookings/date/**", 
+                				 "/api/payments/**", 
+                				 "/api/reviews/service/**").permitAll()
+                .requestMatchers("/api/users/**", 
+                				 "/api/providers/**").hasRole("USER")
+                .requestMatchers("/api/providers/get/**", 
+                				 "/api/providers/delete/**").hasRole("USER")
+                .requestMatchers("/api/services/provider/**").hasRole("USER")
+                .requestMatchers("/api/bookings/book/**", 
+                				 "/api/bookings/delete/**").hasRole("USER")
+                .requestMatchers("/api/payments/pay/**", 
+                				 "/api/payments/booking/**").hasRole("USER")
                 .requestMatchers("/api/reviews/add/**").hasRole("USER")
-                .requestMatchers("/api/reviews/service/**").permitAll()
                 .requestMatchers("/api/providers/**").hasRole("PROVIDER")
+                .requestMatchers("/api/services/add/**").hasRole("PROVIDER")
+                .requestMatchers("/api/bookings/get/**", 
+                				 "/api/bookings/user/**", 
+                				 "/api/bookings/provider/**").hasRole("PROVIDER")
                 .anyRequest().authenticated()
             )
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
