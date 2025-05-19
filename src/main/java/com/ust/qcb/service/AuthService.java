@@ -10,7 +10,7 @@ import com.ust.qcb.dto.AuthenticationRequest;
 import com.ust.qcb.dto.AuthenticationResponse;
 import com.ust.qcb.dto.RegisterRequest;
 import com.ust.qcb.entity.ServiceProvider;
-import com.ust.qcb.entity.User;
+import com.ust.qcb.entity.Users;
 import com.ust.qcb.repository.ServiceProviderRepository;
 import com.ust.qcb.repository.UserRepository;
 import com.ust.qcb.security.JwtUtil;
@@ -34,7 +34,7 @@ public class AuthService {
 	private JwtUtil jwtUtil;
 
 	public String registerUser(RegisterRequest request) {
-    	User user = new User();
+    	Users user = new Users();
         user.setName(request.getName());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
@@ -57,7 +57,7 @@ public class AuthService {
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
     	
-    	User user = userRepository.findByEmail(request.getEmail());
+    	Users user = userRepository.findByEmail(request.getEmail());
 
         if (user == null) {
             ServiceProvider serviceProvider = serviceProviderRepository.findByEmail(request.getEmail());
